@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="University@localhost">
+  <database-model serializer="dbm" rdbms="POSTGRES" format-version="4.8">
+    <root id="1">
+      <ServerVersion>10.3</ServerVersion>
+    </root>
+    <database id="2" parent="1" name="TechMarket">
+      <ObjectId>16393</ObjectId>
+    </database>
+    <database id="3" parent="1" name="University">
+      <ObjectId>16453</ObjectId>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </database>
+    <database id="4" parent="1" name="postgres">
+      <ObjectId>12938</ObjectId>
+      <Comment>default administrative connection database</Comment>
+    </database>
+    <role id="5" parent="1" name="pg_monitor">
+      <ObjectId>3373</ObjectId>
+      <Inherit>1</Inherit>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="6" parent="1" name="pg_read_all_settings">
+      <ObjectId>3374</ObjectId>
+      <Inherit>1</Inherit>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="7" parent="1" name="pg_read_all_stats">
+      <ObjectId>3375</ObjectId>
+      <Inherit>1</Inherit>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="8" parent="1" name="pg_signal_backend">
+      <ObjectId>4200</ObjectId>
+      <Inherit>1</Inherit>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="9" parent="1" name="pg_stat_scan_tables">
+      <ObjectId>3377</ObjectId>
+      <Inherit>1</Inherit>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="10" parent="1" name="postgres">
+      <ObjectId>10</ObjectId>
+      <SuperRole>1</SuperRole>
+      <Inherit>1</Inherit>
+      <CreateRole>1</CreateRole>
+      <CreateDb>1</CreateDb>
+      <CanLogin>1</CanLogin>
+      <Replication>1</Replication>
+      <ConnectionLimit>-1</ConnectionLimit>
+      <BypassRls>1</BypassRls>
+    </role>
+    <schema id="11" parent="3" name="information_schema">
+      <ObjectId>12648</ObjectId>
+    </schema>
+    <schema id="12" parent="3" name="pg_catalog">
+      <ObjectId>11</ObjectId>
+      <Comment>system catalog schema</Comment>
+    </schema>
+    <schema id="13" parent="3" name="pg_temp_1">
+      <ObjectId>11736</ObjectId>
+    </schema>
+    <schema id="14" parent="3" name="pg_toast">
+      <ObjectId>99</ObjectId>
+      <Comment>reserved schema for TOAST tables</Comment>
+    </schema>
+    <schema id="15" parent="3" name="pg_toast_temp_1">
+      <ObjectId>11737</ObjectId>
+    </schema>
+    <schema id="16" parent="3" name="public">
+      <ObjectId>2200</ObjectId>
+      <Comment>standard public schema</Comment>
+      <IntrospectionTimestamp>2018-05-07.08:55:31.470</IntrospectionTimestamp>
+      <IntrospectionStateNumber>626</IntrospectionStateNumber>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <sequence id="17" parent="16" name="Files_file_id_seq">
+      <ObjectId>16536</ObjectId>
+      <StateNumber>596</StateNumber>
+      <SequenceIdentity>1..2147483647</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
+      <CacheSize>1</CacheSize>
+      <DataType>integer</DataType>
+    </sequence>
+    <sequence id="18" parent="16" name="HomeWorkLog_worklog_id_seq">
+      <ObjectId>16514</ObjectId>
+      <StateNumber>590</StateNumber>
+      <SequenceIdentity>1..2147483647</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
+      <CacheSize>1</CacheSize>
+      <DataType>integer</DataType>
+    </sequence>
+    <sequence id="19" parent="16" name="HomeWork_work_id_seq">
+      <ObjectId>16470</ObjectId>
+      <StateNumber>579</StateNumber>
+      <SequenceIdentity>1..2147483647</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
+      <CacheSize>1</CacheSize>
+      <DataType>integer</DataType>
+    </sequence>
+    <sequence id="20" parent="16" name="LessonsLog_leslog_id_seq">
+      <ObjectId>16487</ObjectId>
+      <StateNumber>582</StateNumber>
+      <SequenceIdentity>1..2147483647</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
+      <CacheSize>1</CacheSize>
+      <DataType>integer</DataType>
+    </sequence>
+    <sequence id="21" parent="16" name="Lessons_number_seq">
+      <ObjectId>24645</ObjectId>
+      <StateNumber>624</StateNumber>
+      <SequenceIdentity>1..2147483647</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
+      <CacheSize>1</CacheSize>
+      <DataType>integer</DataType>
+    </sequence>
+    <sequence id="22" parent="16" name="Students_stud_id_seq">
+      <ObjectId>16454</ObjectId>
+      <StateNumber>577</StateNumber>
+      <SequenceIdentity>1..2147483647</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
+      <CacheSize>1</CacheSize>
+      <DataType>integer</DataType>
+    </sequence>
+    <table id="23" parent="16" name="Files">
+      <ObjectId>16538</ObjectId>
+      <StateNumber>597</StateNumber>
+    </table>
+    <table id="24" parent="16" name="HomeWork">
+      <ObjectId>16472</ObjectId>
+      <StateNumber>626</StateNumber>
+    </table>
+    <table id="25" parent="16" name="HomeWorkLog">
+      <ObjectId>16516</ObjectId>
+      <StateNumber>600</StateNumber>
+    </table>
+    <table id="26" parent="16" name="Lessons">
+      <ObjectId>16462</ObjectId>
+      <StateNumber>626</StateNumber>
+    </table>
+    <table id="27" parent="16" name="LessonsLog">
+      <ObjectId>16489</ObjectId>
+      <StateNumber>625</StateNumber>
+    </table>
+    <table id="28" parent="16" name="Students">
+      <ObjectId>16456</ObjectId>
+      <StateNumber>593</StateNumber>
+    </table>
+    <column id="29" parent="23" name="file_id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>596</StateNumber>
+      <DefaultExpression>nextval(&apos;&quot;Files_file_id_seq&quot;&apos;::regclass)</DefaultExpression>
+      <TypeId>23</TypeId>
+      <SequenceName>Files_file_id_seq</SequenceName>
+    </column>
+    <column id="30" parent="23" name="worklog_id">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>596</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="31" parent="23" name="file_path">
+      <Position>3</Position>
+      <DataType>text|0s</DataType>
+      <StateNumber>596</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <index id="32" parent="23" name="Files_pkey">
+      <ObjectId>16545</ObjectId>
+      <ColNames>file_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="33" parent="23" name="fki_filework_id">
+      <ObjectId>16552</ObjectId>
+      <ColNames>worklog_id</ColNames>
+    </index>
+    <key id="34" parent="23" name="Files_pkey">
+      <ObjectId>16546</ObjectId>
+      <ColNames>file_id</ColNames>
+      <UnderlyingIndexName>Files_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="35" parent="23" name="filework_id">
+      <ObjectId>16547</ObjectId>
+      <ColNames>worklog_id</ColNames>
+      <RefTableId>16516</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>HomeWorkLog</RefTableName>
+      <RefKeyName>HomeWorkLog_pkey</RefKeyName>
+      <RefColNames>worklog_id</RefColNames>
+      <OnDelete>cascade</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
+    </foreign-key>
+    <column id="36" parent="24" name="work_id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>579</StateNumber>
+      <DefaultExpression>nextval(&apos;&quot;HomeWork_work_id_seq&quot;&apos;::regclass)</DefaultExpression>
+      <TypeId>23</TypeId>
+      <SequenceName>HomeWork_work_id_seq</SequenceName>
+    </column>
+    <column id="37" parent="24" name="number">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>579</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="38" parent="24" name="task_text">
+      <Position>3</Position>
+      <DataType>text|0s</DataType>
+      <StateNumber>579</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="39" parent="24" name="deadline">
+      <Position>4</Position>
+      <DataType>timestamp|0s</DataType>
+      <StateNumber>579</StateNumber>
+      <TypeId>1114</TypeId>
+    </column>
+    <index id="40" parent="24" name="HomeWork_pkey">
+      <ObjectId>16479</ObjectId>
+      <ColNames>work_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="41" parent="24" name="fki_number">
+      <ObjectId>16486</ObjectId>
+      <ColNames>number</ColNames>
+    </index>
+    <key id="42" parent="24" name="HomeWork_pkey">
+      <ObjectId>16480</ObjectId>
+      <ColNames>work_id</ColNames>
+      <UnderlyingIndexName>HomeWork_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="43" parent="24" name="numberwork">
+      <ObjectId>24661</ObjectId>
+      <ColNames>number</ColNames>
+      <RefTableId>16462</RefTableId>
+      <RefColPositions>4</RefColPositions>
+      <RefTableName>Lessons</RefTableName>
+      <RefKeyName>Lessons_pkey</RefKeyName>
+      <RefColNames>number</RefColNames>
+      <OnDelete>cascade</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
+    </foreign-key>
+    <column id="44" parent="25" name="worklog_id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>590</StateNumber>
+      <DefaultExpression>nextval(&apos;&quot;HomeWorkLog_worklog_id_seq&quot;&apos;::regclass)</DefaultExpression>
+      <TypeId>23</TypeId>
+      <SequenceName>HomeWorkLog_worklog_id_seq</SequenceName>
+    </column>
+    <column id="45" parent="25" name="work_id">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>590</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="46" parent="25" name="stud_id">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>590</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="47" parent="25" name="progress">
+      <Position>4</Position>
+      <DataType>smallint|0s</DataType>
+      <StateNumber>590</StateNumber>
+      <TypeId>21</TypeId>
+    </column>
+    <column id="48" parent="25" name="assessment">
+      <Position>5</Position>
+      <DataType>smallint|0s</DataType>
+      <StateNumber>590</StateNumber>
+      <TypeId>21</TypeId>
+    </column>
+    <index id="49" parent="25" name="HomeWorkLog_pkey">
+      <ObjectId>16520</ObjectId>
+      <ColNames>worklog_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="50" parent="25" name="stud-work">
+      <ObjectId>16534</ObjectId>
+      <ColNames>work_id
+stud_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="51" parent="25" name="fki_work_id">
+      <ObjectId>16527</ObjectId>
+      <ColNames>work_id</ColNames>
+    </index>
+    <index id="52" parent="25" name="fki_studwork_id">
+      <ObjectId>16533</ObjectId>
+      <ColNames>stud_id</ColNames>
+    </index>
+    <key id="53" parent="25" name="HomeWorkLog_pkey">
+      <ObjectId>16521</ObjectId>
+      <ColNames>worklog_id</ColNames>
+      <UnderlyingIndexName>HomeWorkLog_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <key id="54" parent="25" name="stud-work">
+      <ObjectId>16535</ObjectId>
+      <ColNames>work_id
+stud_id</ColNames>
+      <UnderlyingIndexName>stud-work</UnderlyingIndexName>
+    </key>
+    <foreign-key id="55" parent="25" name="work_id">
+      <ObjectId>16522</ObjectId>
+      <ColNames>work_id</ColNames>
+      <RefTableId>16472</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>HomeWork</RefTableName>
+      <RefKeyName>HomeWork_pkey</RefKeyName>
+      <RefColNames>work_id</RefColNames>
+      <OnDelete>cascade</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
+    </foreign-key>
+    <foreign-key id="56" parent="25" name="studwork_id">
+      <ObjectId>16528</ObjectId>
+      <ColNames>stud_id</ColNames>
+      <RefTableId>16456</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>Students</RefTableName>
+      <RefKeyName>Students_pkey</RefKeyName>
+      <RefColNames>stud_id</RefColNames>
+      <OnDelete>cascade</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
+    </foreign-key>
+    <check id="57" parent="25" name="progress_check">
+      <ObjectId>16553</ObjectId>
+      <ColNames>progress</ColNames>
+      <Predicate>progress &gt;= 0</Predicate>
+    </check>
+    <check id="58" parent="25" name="assess_check">
+      <ObjectId>16554</ObjectId>
+      <ColNames>assessment</ColNames>
+      <Predicate>assessment &gt;= 0</Predicate>
+    </check>
+    <column id="59" parent="26" name="number">
+      <Position>4</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>624</StateNumber>
+      <DefaultExpression>nextval(&apos;&quot;Lessons_number_seq&quot;&apos;::regclass)</DefaultExpression>
+      <TypeId>23</TypeId>
+      <SequenceName>Lessons_number_seq</SequenceName>
+    </column>
+    <column id="60" parent="26" name="date_time">
+      <Position>5</Position>
+      <DataType>timestamp|0s</DataType>
+      <StateNumber>624</StateNumber>
+      <TypeId>1114</TypeId>
+    </column>
+    <column id="61" parent="26" name="lesson_data">
+      <Position>6</Position>
+      <DataType>text|0s</DataType>
+      <StateNumber>624</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <index id="62" parent="26" name="Lessons_pkey">
+      <ObjectId>24654</ObjectId>
+      <ColNames>number</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="63" parent="26" name="Lessons_pkey">
+      <ObjectId>24655</ObjectId>
+      <ColNames>number</ColNames>
+      <UnderlyingIndexName>Lessons_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="64" parent="27" name="leslog_id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>582</StateNumber>
+      <DefaultExpression>nextval(&apos;&quot;LessonsLog_leslog_id_seq&quot;&apos;::regclass)</DefaultExpression>
+      <TypeId>23</TypeId>
+      <SequenceName>LessonsLog_leslog_id_seq</SequenceName>
+    </column>
+    <column id="65" parent="27" name="number">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>582</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="66" parent="27" name="stud_id">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>582</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="67" parent="27" name="presence">
+      <Position>4</Position>
+      <DataType>boolean|0s</DataType>
+      <StateNumber>582</StateNumber>
+      <TypeId>16</TypeId>
+    </column>
+    <index id="68" parent="27" name="LessonsLog_pkey">
+      <ObjectId>16493</ObjectId>
+      <ColNames>leslog_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="69" parent="27" name="lessons-studs">
+      <ObjectId>16512</ObjectId>
+      <ColNames>number
+stud_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="70" parent="27" name="fki_numberlog">
+      <ObjectId>16505</ObjectId>
+      <ColNames>number</ColNames>
+    </index>
+    <index id="71" parent="27" name="fki_studlog">
+      <ObjectId>16511</ObjectId>
+      <ColNames>stud_id</ColNames>
+    </index>
+    <key id="72" parent="27" name="LessonsLog_pkey">
+      <ObjectId>16494</ObjectId>
+      <ColNames>leslog_id</ColNames>
+      <UnderlyingIndexName>LessonsLog_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <key id="73" parent="27" name="lessons-studs">
+      <ObjectId>16513</ObjectId>
+      <ColNames>number
+stud_id</ColNames>
+      <UnderlyingIndexName>lessons-studs</UnderlyingIndexName>
+    </key>
+    <foreign-key id="74" parent="27" name="number">
+      <ObjectId>24656</ObjectId>
+      <ColNames>number</ColNames>
+      <RefTableId>16462</RefTableId>
+      <RefColPositions>4</RefColPositions>
+      <RefTableName>Lessons</RefTableName>
+      <RefKeyName>Lessons_pkey</RefKeyName>
+      <RefColNames>number</RefColNames>
+      <OnDelete>cascade</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
+    </foreign-key>
+    <foreign-key id="75" parent="27" name="studlog">
+      <ObjectId>16506</ObjectId>
+      <ColNames>stud_id</ColNames>
+      <RefTableId>16456</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>Students</RefTableName>
+      <RefKeyName>Students_pkey</RefKeyName>
+      <RefColNames>stud_id</RefColNames>
+      <OnDelete>cascade</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
+    </foreign-key>
+    <column id="76" parent="28" name="stud_id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>577</StateNumber>
+      <DefaultExpression>nextval(&apos;&quot;Students_stud_id_seq&quot;&apos;::regclass)</DefaultExpression>
+      <TypeId>23</TypeId>
+      <SequenceName>Students_stud_id_seq</SequenceName>
+    </column>
+    <column id="77" parent="28" name="name">
+      <Position>2</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>577</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="78" parent="28" name="password">
+      <Position>3</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <StateNumber>577</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="79" parent="28" name="Students_pkey">
+      <ObjectId>16460</ObjectId>
+      <ColNames>stud_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="80" parent="28" name="Students_pkey">
+      <ObjectId>16461</ObjectId>
+      <ColNames>stud_id</ColNames>
+      <UnderlyingIndexName>Students_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>
