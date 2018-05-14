@@ -1,6 +1,6 @@
 package ru.innopolis.stc9.servlets.db.dao;
 
-import pojo.LessonLog;
+import ru.innopolis.stc9.servlets.pojo.LessonLog;
 
 import java.util.List;
 

@@ -1,7 +1,9 @@
 package ru.innopolis.stc9.servlets.db.dao;
 
-import pojo.HomeWork;
-import ConnectionManager.*;
+import org.apache.log4j.Logger;
+import ru.innopolis.stc9.servlets.db.connection.ConnectionManager;
+import ru.innopolis.stc9.servlets.db.connection.ConnectionManagerJDBCImpl;
+import ru.innopolis.stc9.servlets.pojo.HomeWork;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,6 +14,7 @@ import java.util.List;
 
 public class HomeWorkDAOImpl implements HomeWorkDAO {
     private static ConnectionManager connectionManager = ConnectionManagerJDBCImpl.getInstance();
+    private static final Logger errLogger = Logger.getLogger("errors");
 
     @Override
     public int addHomeWork(HomeWork homeWork) {
@@ -24,7 +27,7 @@ public class HomeWorkDAOImpl implements HomeWorkDAO {
             ps.setTimestamp(3, homeWork.deadline);
             result = ps.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            errLogger.error(e);
         }
         return result;
     }
@@ -54,7 +57,7 @@ public class HomeWorkDAOImpl implements HomeWorkDAO {
                 result = ps.executeUpdate();
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            errLogger.error(e);
         }
         return result;
     }
@@ -84,7 +87,7 @@ public class HomeWorkDAOImpl implements HomeWorkDAO {
                 result = ps.executeUpdate();
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            errLogger.error(e);
         }
         return result;
     }
@@ -98,7 +101,7 @@ public class HomeWorkDAOImpl implements HomeWorkDAO {
             ps.setInt(1, id);
             result = ps.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            errLogger.error(e);
         }
         return result;
     }
@@ -112,7 +115,7 @@ public class HomeWorkDAOImpl implements HomeWorkDAO {
             ps.setInt(1, num);
             result = ps.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            errLogger.error(e);
         }
         return result;
     }
@@ -132,7 +135,7 @@ public class HomeWorkDAOImpl implements HomeWorkDAO {
                     resultSet.getTimestamp(4)
             );
         } catch (SQLException e) {
-            e.printStackTrace();
+            errLogger.error(e);
         }
         return result;
     }
@@ -154,7 +157,7 @@ public class HomeWorkDAOImpl implements HomeWorkDAO {
                 ));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            errLogger.error(e);
         }
         return result;
     }

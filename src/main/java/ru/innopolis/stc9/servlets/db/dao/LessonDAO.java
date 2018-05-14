@@ -1,6 +1,6 @@
 package ru.innopolis.stc9.servlets.db.dao;
 
-import pojo.Lesson;
+import ru.innopolis.stc9.servlets.pojo.Lesson;
 
 public interface LessonDAO {
     public int addLesson(Lesson lesson);
