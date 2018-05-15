@@ -2,6 +2,7 @@ package ru.innopolis.stc9.servlets.controller;
 
 import org.apache.log4j.Logger;
 import ru.innopolis.stc9.servlets.db.connection.ConnectionManagerJDBCImpl;
+import ru.innopolis.stc9.servlets.pojo.Student;
 import ru.innopolis.stc9.servlets.service.UserService;
 
 import javax.servlet.ServletException;
@@ -55,7 +56,10 @@ public class StartServlet extends HttpServlet {
             resp.getWriter().print(student.stud_id);
             resp.getWriter().println(' ' + student.name + ' ' + student.password);
         }*/
-
+        String action=req.getParameter("action");
+        if("logout".equals(action)){
+            req.getSession().invalidate();
+        }
         req.getRequestDispatcher("/index.jsp").forward(req, resp);
     }
 
@@ -64,23 +68,15 @@ public class StartServlet extends HttpServlet {
         String userName = req.getParameter("userName");
         String password = req.getParameter("userPassword");
 
-        if (userService.getByNamePasswordFirsResult(userName, password)!=null){
-            resp.sendRedirect(req.getContextPath() + "/somesheet");
-        } else {
-            try {
-                int userId = Integer.parseInt(userName);
-                if (userService.getByIdPassword(userId, password) != null) {
-                    /*
-
-                     */
-                } else {
-                    resp.sendRedirect(req.getContextPath() + "/index?replyMsg=" +
-                            "invalid password for name or ID");
-                }
-            } catch (NumberFormatException e) {
-                resp.sendRedirect(req.getContextPath() + "/index?replyMsg=" +
-                        "invalid password for name or ID is not integer");
-            }
+        Student user=userService.CheckAuthNameOrId(userName, password);
+        if (user!=null){
+            req.getSession().setAttribute("id", user.stud_id);
+            req.getSession().setAttribute("name", user.name);
+            req.getSession().setAttribute("role", user.role);
+            resp.sendRedirect(req.getContextPath() + "/student/somesheet");
+        }else{
+            resp.sendRedirect(req.getContextPath() + "/index?loginReply="
+                    + "invalid password for name or ID");
         }
     }
 }

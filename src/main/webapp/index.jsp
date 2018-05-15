@@ -42,7 +42,7 @@
 
   <div class="middle">
     <div class= "start_page_reply">
-      <%=(request.getParameter("replyMsg")!=null) ? request.getParameter("replyMsg") : ""%>
+      <%=(request.getParameter("loginReply")!=null) ? request.getParameter("loginReply") : ""%>
     </div>
   </div><!-- .middle-->
 

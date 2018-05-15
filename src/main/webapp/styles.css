@@ -39,6 +39,13 @@ html, body {
 	min-width: 80px;
 }
 
+.header_user_name {
+    width: 100%;
+    vertical-align: top;
+    text-align: right;
+    padding: 10px 20px 0 0;
+}
+
 /* Start body
 -----------------------------------------------------------------------------*/
 .start_page_reply {

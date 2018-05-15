@@ -24,4 +24,15 @@ public class UserService {
     public List<Student> getByName(String name) {
         return userDAO.getByName(name);
     }
+
+    public Student CheckAuthNameOrId(String name, String password){
+        Student user=userDAO.getByNamePasswordFirsResult(name, password);
+        if (user==null){
+            try {
+                int userId = Integer.parseInt(name);
+                user=userDAO.getByIdPassword(userId, password);
+            } catch (NumberFormatException e) { }
+        }
+        return user;
+    }
 }

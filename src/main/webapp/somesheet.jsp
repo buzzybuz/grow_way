@@ -16,7 +16,13 @@
 <div class="wrapper">
 
     <header class="header">
-        <img src="${pageContext.request.contextPath}/images/logo_mini.jpg">
+        <table>
+            <td><img src="${pageContext.request.contextPath}/images/logo_mini.jpg"></td>
+            <td class="header_user_name">
+                <%=(String)request.getSession().getAttribute("name")%>
+                <a href="../index?action=logout">(exit)</a>
+            </td>
+        </table>
     </header><!-- .header-->
 
     <div class="middle">
