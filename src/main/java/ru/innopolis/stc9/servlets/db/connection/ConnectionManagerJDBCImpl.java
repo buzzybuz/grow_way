@@ -2,16 +2,19 @@ package ru.innopolis.stc9.servlets.db.connection;
 
 import org.apache.log4j.Logger;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
 
 public class ConnectionManagerJDBCImpl implements ConnectionManager {
     private static ConnectionManager connectionManager;
     private static final Logger errLogger = Logger.getLogger("errors");
-    public static String DB_HOST;
-    public static String DB_LOGIN;
-    public static String DB_PASSWORD;
+    private static String DB_HOST;
+    private static String DB_LOGIN;
+    private static String DB_PASSWORD;
 
     public static ConnectionManager getInstance(){
         if(connectionManager==null)
@@ -19,7 +22,27 @@ public class ConnectionManagerJDBCImpl implements ConnectionManager {
         return connectionManager;
     }
 
-    private ConnectionManagerJDBCImpl(){}
+    void getConnectionParams() {
+        try {
+            Properties property = new Properties();
+            File dbLoginFile = new File(Thread.currentThread().getContextClassLoader().getResource(
+                    "dbAuthorization.properties").toURI());
+            property.load(new FileInputStream(dbLoginFile));
+
+            DB_HOST = property.getProperty("DB.host");
+            DB_LOGIN = property.getProperty("DB.login");
+            DB_PASSWORD = property.getProperty("DB.password");
+        } catch (Exception e) {
+            errLogger.error(e);
+            DB_HOST = "jdbc:postgresql://localhost:5432/University";
+            DB_LOGIN = "UserName";
+            DB_PASSWORD = "Password";
+        }
+    }
+
+    private ConnectionManagerJDBCImpl(){
+        getConnectionParams();
+    }
 
     @Override
     public Connection getConnection() {

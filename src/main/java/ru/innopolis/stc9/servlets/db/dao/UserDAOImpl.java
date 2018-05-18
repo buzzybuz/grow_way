@@ -3,7 +3,7 @@ package ru.innopolis.stc9.servlets.db.dao;
 import org.apache.log4j.Logger;
 import ru.innopolis.stc9.servlets.db.connection.ConnectionManager;
 import ru.innopolis.stc9.servlets.db.connection.ConnectionManagerJDBCImpl;
-import ru.innopolis.stc9.servlets.pojo.Student;
+import ru.innopolis.stc9.servlets.pojo.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,19 +18,18 @@ public class UserDAOImpl implements UserDAO {
     private static final Logger errLogger = Logger.getLogger("errors");
 
     @Override
-    public Student getById(int id) {
-        Student result = null;
+    public User getById(int id) {
+        User result = null;
         try (Connection connection = connectionManager.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(
-                    "SELECT * FROM \"Users\" WHERE user_id = ?");
+                    "SELECT user_id, name, role FROM \"Users\" WHERE user_id = ?");
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
             if(resultSet.next()){
-                result = new Student(
+                result = new User(
                         resultSet.getInt(1),
                         resultSet.getString(2),
-                        resultSet.getString(3),
-                        resultSet.getByte(4)
+                        resultSet.getByte(3)
                 );
             }
         } catch (SQLException e) {
@@ -39,20 +38,19 @@ public class UserDAOImpl implements UserDAO {
         return result;
     }
 
-    public Student getByIdPassword(int id, String pass) {
-        Student result = null;
+    public User getByIdPassword(int id, String pass) {
+        User result = null;
         try (Connection connection = connectionManager.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(
-                    "SELECT * FROM \"Users\" WHERE user_id = ? AND password = ?");
+                    "SELECT user_id, name, role FROM \"Users\" WHERE user_id = ? AND password = ?");
             statement.setInt(1, id);
             statement.setString(2, pass);
             ResultSet resultSet = statement.executeQuery();
             if(resultSet.next()){
-                result = new Student(
+                result = new User(
                         resultSet.getInt(1),
                         resultSet.getString(2),
-                        resultSet.getString(3),
-                        resultSet.getByte(4)
+                        resultSet.getByte(3)
                 );
             }
         } catch (SQLException e) {
@@ -62,20 +60,19 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public Student getByNamePasswordFirsResult(String name, String pass) {
-        Student result = null;
+    public User getByNamePasswordFirsResult(String name, String pass) {
+        User result = null;
         try (Connection connection = connectionManager.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(
-                    "SELECT * FROM \"Users\" WHERE name = ? AND password = ?");
+                    "SELECT user_id, name, role FROM \"Users\" WHERE name = ? AND password = ?");
             statement.setString(1, name);
             statement.setString(2, pass);
             ResultSet resultSet = statement.executeQuery();
             if(resultSet.next()){
-                result = new Student(
+                result = new User(
                         resultSet.getInt(1),
                         resultSet.getString(2),
-                        resultSet.getString(3),
-                        resultSet.getByte(4)
+                        resultSet.getByte(3)
                 );
             }
         } catch (SQLException e) {
@@ -85,24 +82,37 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public List<Student> getByName(String name) {
-        ArrayList<Student> result = new ArrayList<>();
+    public List<User> getByName(String name) {
+        ArrayList<User> result = new ArrayList<>();
         try (Connection connection = connectionManager.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(
-                    "SELECT * FROM \"Users\" WHERE name = ?");
+                    "SELECT user_id, name, role FROM \"Users\" WHERE name = ?");
             statement.setString(1, name);
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
-                result.add(new Student(
+                result.add(new User(
                         resultSet.getInt(1),
                         resultSet.getString(2),
-                        resultSet.getString(3),
-                        resultSet.getByte(4)
+                        resultSet.getByte(3)
                 ));
             }
         } catch (SQLException e) {
             errLogger.error(e);
+        }
+        return result;
+    }
+
+
+    @Override
+    public int addUser(String name, String password) throws SQLException {
+        int result = -1;
+        try (Connection connection = connectionManager.getConnection()) {
+            PreparedStatement ps = connection.prepareStatement(
+                    "INSERT INTO \"Users\" (name, password) VALUES (?, ?)");
+            ps.setString(1, name);
+            ps.setString(2, password);
+            result = ps.executeUpdate();
         }
         return result;
     }

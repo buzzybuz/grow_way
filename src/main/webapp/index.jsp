@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 
-<%@ page contentType="text/html; charset=UTF-8" language="java" %>
+<%@ page contentType="text/html; charset=UTF-8" language="java"%>
 <html>
 
 <head>
@@ -31,7 +31,8 @@
             <tr>
               <th><input type="text" name="userName"></th>
               <th><input class="font_bold" type="password" name="userPassword"></th>
-              <th><input class= "button_min_width" type="submit" value="OK"></th>
+              <th><input class= "button_min_width" type="submit" name="button_login" value="OK"></th>
+              <th><input class= "button_min_width" type="submit" name="button_add" value="add me"></th>
             </tr>
           </table>
         </form>

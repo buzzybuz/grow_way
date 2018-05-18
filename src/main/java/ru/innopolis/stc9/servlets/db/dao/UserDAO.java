@@ -1,12 +1,14 @@
 package ru.innopolis.stc9.servlets.db.dao;
 
-import ru.innopolis.stc9.servlets.pojo.Student;
+import ru.innopolis.stc9.servlets.pojo.User;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public interface UserDAO {
-    Student getById(int id);
-    Student getByIdPassword(int id, String pass);
-    List<Student> getByName(String name);
-    Student getByNamePasswordFirsResult(String name, String pass);
+    User getById(int id);
+    User getByIdPassword(int id, String pass);
+    List<User> getByName(String name);
+    User getByNamePasswordFirsResult(String name, String pass);
+    int addUser(String name, String password) throws SQLException;
 }
