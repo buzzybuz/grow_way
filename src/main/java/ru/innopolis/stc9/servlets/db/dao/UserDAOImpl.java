@@ -14,11 +14,9 @@ import java.util.List;
 
 public class UserDAOImpl implements UserDAO {
     private static ConnectionManager connectionManager = ConnectionManagerJDBCImpl.getInstance();
-    private static final Logger logger = Logger.getRootLogger();
-    private static final Logger errLogger = Logger.getLogger("errors");
 
     @Override
-    public User getById(int id) {
+    public User getById(int id) throws SQLException{
         User result = null;
         try (Connection connection = connectionManager.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(
@@ -32,13 +30,11 @@ public class UserDAOImpl implements UserDAO {
                         resultSet.getByte(3)
                 );
             }
-        } catch (SQLException e) {
-            errLogger.error(e);
         }
         return result;
     }
 
-    public User getByIdPassword(int id, String pass) {
+    public User getByIdPassword(int id, String pass) throws SQLException {
         User result = null;
         try (Connection connection = connectionManager.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(
@@ -53,14 +49,12 @@ public class UserDAOImpl implements UserDAO {
                         resultSet.getByte(3)
                 );
             }
-        } catch (SQLException e) {
-            errLogger.error(e);
         }
         return result;
     }
 
     @Override
-    public User getByNamePasswordFirsResult(String name, String pass) {
+    public User getByNamePasswordFirsResult(String name, String pass) throws SQLException {
         User result = null;
         try (Connection connection = connectionManager.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(
@@ -75,14 +69,12 @@ public class UserDAOImpl implements UserDAO {
                         resultSet.getByte(3)
                 );
             }
-        } catch (SQLException e) {
-            errLogger.error(e);
         }
         return result;
     }
 
     @Override
-    public List<User> getByName(String name) {
+    public List<User> getByName(String name) throws SQLException {
         ArrayList<User> result = new ArrayList<>();
         try (Connection connection = connectionManager.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(
@@ -97,8 +89,6 @@ public class UserDAOImpl implements UserDAO {
                         resultSet.getByte(3)
                 ));
             }
-        } catch (SQLException e) {
-            errLogger.error(e);
         }
         return result;
     }

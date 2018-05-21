@@ -11,23 +11,23 @@ import java.util.List;
 public class UserService {
     UserDAO userDAO = new UserDAOImpl();
 
-    public User getById(int id) {
+    public User getById(int id) throws SQLException  {
         return userDAO.getById(id);
     }
 
-    public User getByIdPassword(int id, String pass) {
+    public User getByIdPassword(int id, String pass) throws SQLException  {
         return userDAO.getByIdPassword(id, pass);
     }
 
-    public User getByNamePasswordFirsResult(String name, String pass) {
+    public User getByNamePasswordFirsResult(String name, String pass) throws SQLException  {
         return userDAO.getByNamePasswordFirsResult(name, pass);
     }
 
-    public List<User> getByName(String name) {
+    public List<User> getByName(String name) throws SQLException  {
         return userDAO.getByName(name);
     }
 
-    public User CheckAuthNameOrId(String name, String password){
+    public User CheckAuthNameOrId(String name, String password) throws SQLException {
         User user=userDAO.getByNamePasswordFirsResult(name, password);
         if (user==null){
             try {
@@ -38,13 +38,7 @@ public class UserService {
         return user;
     }
 
-    public String addUser(String name, String password) {
-        String result=null;
-        try{
-            userDAO.addUser(name, password);
-        } catch (SQLException e) {
-            result=e.toString();
-        }
-        return result;
+    public int addUser(String name, String password)throws SQLException {
+        return userDAO.addUser(name, password);
     }
 }

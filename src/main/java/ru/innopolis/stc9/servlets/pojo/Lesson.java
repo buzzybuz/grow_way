@@ -1,18 +1,39 @@
 package ru.innopolis.stc9.servlets.pojo;
 
-public class Lesson {
-    public int num;
-    public String date_time;
-    public String lesson_data;
+import java.time.LocalDateTime;
 
-    public Lesson(String date_time, String lesson_data) {
+public class Lesson {
+    private int num;
+    private LocalDateTime date_time;
+    private String lesson_data;
+
+    public Lesson(int num, LocalDateTime date_time, String lesson_data) {
+        this.num = num;
         this.date_time = date_time;
         this.lesson_data = lesson_data;
     }
 
-    public Lesson(int num, String date_time, String lesson_data) {
+    public int getNum() {
+        return num;
+    }
+
+    public void setNum(int num) {
         this.num = num;
+    }
+
+    public LocalDateTime getDate_time() {
+        return date_time;
+    }
+
+    public void setDate_time(LocalDateTime date_time) {
         this.date_time = date_time;
+    }
+
+    public String getLesson_data() {
+        return lesson_data;
+    }
+
+    public void setLesson_data(String lesson_data) {
         this.lesson_data = lesson_data;
     }
 }

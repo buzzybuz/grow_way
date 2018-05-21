@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.net.URLEncoder;
+import java.sql.SQLException;
 
 @WebServlet("/index")
 public class StartServlet extends HttpServlet {
@@ -18,9 +19,7 @@ public class StartServlet extends HttpServlet {
     private static final Logger errLogger = Logger.getLogger("errors");
     private UserService userService = new UserService();
 
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-/*        String studName = req.getParameter("name");
+    /*        String studName = req.getParameter("name");
 
         if (studName == null)
             return;
@@ -30,6 +29,9 @@ public class StartServlet extends HttpServlet {
             resp.getWriter().println(' ' + student.name + ' ' + student.password);
         }*/
 
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
         if ("logout".equals(action)) {
             req.getSession().invalidate();
@@ -41,35 +43,47 @@ public class StartServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
-        String userName = req.getParameter("userName");
-        String password = req.getParameter("userPassword");
+        String userName = req.getParameter("userName").trim();
+        String password = req.getParameter("userPassword").trim();
 
-        if (req.getParameter("button_login") != null) {
-            User user = userService.CheckAuthNameOrId(userName, password);
-            if (user != null) {
-                req.getSession().setAttribute("user", user);
-                resp.sendRedirect(req.getContextPath() + "/student/somesheet");
-            } else {
-                resp.sendRedirect(req.getContextPath() + "/index?loginReply="
-                        + "invalid password for name or ID");
-            }
-        } else if (req.getParameter("button_add") != null) {
-            if (userName != "" && password != "") {
-                String addResult = userService.addUser(userName, password);
-                if (addResult == null) {
-                    User user = userService.getByNamePasswordFirsResult(userName, password);
-                    String encodeUser=URLEncoder.encode('['+userName+", id: "+user.stud_id+']' , "UTF-8");
-                    resp.sendRedirect(req.getContextPath() + "/index?loginReply="
-                            +"user "+encodeUser+" has been registered, you can login");
+        if (req.getParameter("button_login") != null){
+            try {
+                User user = userService.CheckAuthNameOrId(userName, password);
+                if (user != null) {
+                    req.getSession().setAttribute("user", user);
+                    resp.sendRedirect(req.getContextPath() + "/inner/dashboard");
                 } else {
-                    resp.sendRedirect(req.getContextPath() + "/index?loginReply=" + addResult);
+                    resp.sendRedirect(req.getContextPath() + "/index?loginReply="
+                            + "invalid password for name or ID");
                 }
-            } else {
-                resp.sendRedirect(req.getContextPath() + "/index?loginReply="
-                        + "to add a new user enter a name and password");
+            } catch (SQLException e) {
+                errLogger.error(e);
+                resp.sendRedirect(req.getContextPath() + "/index?loginReply=" + e);
             }
+        }else if (req.getParameter("button_add") != null){
+            resp.sendRedirect(req.getContextPath() + "/index?loginReply="
+                    + userAdd(userName, password));
         }
+    }
 
+    private String userAdd(String name, String password) {
+        if (!name.isEmpty() && !password.isEmpty()) {
+            try {
+                int addRowCount = userService.addUser(name, password);
+                if (addRowCount == 1) {
+                    User user = userService.getByNamePasswordFirsResult(name, password);
+                    String encodeUser = URLEncoder.encode('[' + user.getName() + ", id: " + user.getStud_id() + ']', "UTF-8");
+                    return "user " + encodeUser + " has been registered, you can login";
+                } else {
+                    return "error: added " + addRowCount + " rows";
+                }
+            } catch (SQLException | UnsupportedEncodingException e) {
+                errLogger.error(e);
+                return e.toString();
+            }
+        } else {
+            return "to add a new user enter a name and password";
+        }
     }
 }
 

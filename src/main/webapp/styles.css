@@ -7,6 +7,31 @@ html, body {
 	height: 100%;
 }
 
+.table {
+	display: table;
+}
+
+.row {
+	display: table-row;
+}
+
+.cell {
+	display: table-cell;
+	vertical-align:middle;
+}
+
+.red_text {
+    color: red;
+}
+
+.list {
+	padding: 0 0 10px 0;
+}
+
+.line_height_1_5 {
+	line-height: 1.5
+}
+
 .wrapper {
 	min-width: 800px;
 	max-width: 6000px;
@@ -23,15 +48,10 @@ html, body {
 	background: #BEE3F3;
 }
 
-.table_border_collapse {
-	border-collapse: collapse;
-}	
-
-.text_align_left {
+.table_login {
+	display: table;
+	border-spacing: 2px;
 	text-align: left;
-}	
-
-.font_bold {
 	font-weight: bold;
 }
 
@@ -40,6 +60,7 @@ html, body {
 }
 
 .header_user_name {
+	display: table-cell;
     width: 100%;
     vertical-align: top;
     text-align: right;
@@ -71,18 +92,24 @@ html, body {
 	overflow: hidden;
 }
 .content {
-	padding: 0 0 0 270px;
+	padding: 20px 10px 10px 240px;
 }
 
 /* Left Sidebar
 -----------------------------------------------------------------------------*/
 .left-sidebar {
 	float: left;
-	width: 250px;
+	width: 200px;
 	margin-left: -100%;
 	position: relative;
-	background: #B5E3FF;
-	padding: 10px; 
+	padding: 10px;
+}
+
+.left-sidebar-element{
+	margin: 5px;
+	padding: 5px;
+	border: 1px solid;
+	text-align: center;
 }
 
 /* Footer
