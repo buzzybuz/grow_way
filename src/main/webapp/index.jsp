@@ -38,8 +38,6 @@
         <div class="start_page_reply">
             <c:out value="${param.loginReply}" default=""/>
         </div>
-        <jsp:useBean id="date" class="java.util.Date"/>
-        <fmt:formatDate type = "both" timeStyle = "short" value = "${date}" />
     </div><!-- .middle-->
 
 </div><!-- .wrapper -->

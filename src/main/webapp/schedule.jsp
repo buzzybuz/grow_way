@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <link href="${pageContext.request.contextPath}/styles.css" rel="stylesheet" type="text/css">
 
 <html>
@@ -20,7 +20,9 @@
                 </div>
                 <div class="line_height_1_5">
                     <c:forEach items="${requestScope.scheduleList}" var="list">
-                        ${list.num}&nbsp&nbsp&nbsp${list.date_time}&nbsp&nbsp&nbsp${list.lesson_data}<br>
+                        ${list.num}&nbsp&nbsp&nbsp
+                        <fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${list.date_time}"/>
+                        &nbsp&nbsp&nbsp${list.lesson_data}<br>
                     </c:forEach>
                 </div>
             </main><!-- .content -->

@@ -4,8 +4,10 @@ import ru.innopolis.stc9.servlets.db.connection.ConnectionManager;
 import ru.innopolis.stc9.servlets.db.connection.ConnectionManagerJDBCImpl;
 import ru.innopolis.stc9.servlets.pojo.Lesson;
 
-import java.sql.*;
-import java.time.LocalDateTime;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,13 +37,13 @@ public class LessonDAOImpl implements LessonDAO {
     @Override
     public List<Lesson> getAll() throws SQLException {
         ArrayList<Lesson> result = new ArrayList<>();
-        try (Connection connection = connectionManager.getConnection()) {
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM \"Lessons\"");
+        try (Connection connection = connectionManager.getConnection();
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery("SELECT * FROM \"Lessons\"")) {
             while (resultSet.next()) {
                 result.add(new Lesson(
                         resultSet.getInt(1),
-                        resultSet.getObject(2, LocalDateTime.class),
+                        resultSet.getTimestamp(2),
                         resultSet.getString(3)
                 ));
             }

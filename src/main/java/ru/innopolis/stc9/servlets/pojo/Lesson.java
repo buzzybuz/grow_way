@@ -1,13 +1,13 @@
 package ru.innopolis.stc9.servlets.pojo;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 public class Lesson {
     private int num;
-    private LocalDateTime date_time;
+    private Date date_time;
     private String lesson_data;
 
-    public Lesson(int num, LocalDateTime date_time, String lesson_data) {
+    public Lesson(int num, Date date_time, String lesson_data) {
         this.num = num;
         this.date_time = date_time;
         this.lesson_data = lesson_data;
@@ -21,11 +21,11 @@ public class Lesson {
         this.num = num;
     }
 
-    public LocalDateTime getDate_time() {
+    public Date getDate_time() {
         return date_time;
     }
 
-    public void setDate_time(LocalDateTime date_time) {
+    public void setDate_time(Date date_time) {
         this.date_time = date_time;
     }
 

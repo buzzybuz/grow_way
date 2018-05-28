@@ -16,7 +16,8 @@ public class AuthFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpSession httpSession = ((HttpServletRequest) request).getSession();
-        if (httpSession.getAttribute("user") != null) {
+        if (httpSession.getAttribute("user" +
+                "") != null) {
             chain.doFilter(request, response);
         } else {
             HttpServletResponse httpServletRespoonse = (HttpServletResponse) response;

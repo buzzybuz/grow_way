@@ -1,6 +1,5 @@
 package ru.innopolis.stc9.servlets.service;
 
-import org.apache.log4j.Logger;
 import ru.innopolis.stc9.servlets.db.dao.UserDAO;
 import ru.innopolis.stc9.servlets.db.dao.UserDAOImpl;
 import ru.innopolis.stc9.servlets.pojo.User;
